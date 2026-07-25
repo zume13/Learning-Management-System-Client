@@ -1,0 +1,122 @@
+.login-page {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+
+  background: var(--background);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 460px;
+
+  padding: 40px;
+
+  background: var(--surface);
+
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  margin-bottom: 28px;
+
+  color: var(--text-secondary);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 18px;
+}
+
+label {
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+
+  padding: 12px 16px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  font-size: 16px;
+
+  transition: var(--transition);
+}
+
+.password-wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.password-wrapper input {
+  flex: 1;
+}
+
+.show-password-btn {
+  width: 48px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  background: var(--surface);
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.show-password-btn:hover {
+  background: var(--background);
+}
+
+.login-btn {
+  width: 100%;
+
+  margin-top: 10px;
+  padding: 14px;
+
+  border: none;
+  border-radius: var(--radius-md);
+
+  background: var(--primary);
+  color: var(--surface);
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.login-btn:hover {
+  background: var(--primary-hover);
+}
+
+.register {
+  margin-top: 24px;
+
+  text-align: center;
+
+  color: var(--text-secondary);
+}
+
+.register a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
