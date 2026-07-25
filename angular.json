@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "Learning-Management-System-Client": {
+    "learning-management-system-client": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -24,9 +24,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -56,10 +54,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Learning-Management-System-Client:build:production"
+              "buildTarget": "learning-management-system-client:build:production"
             },
             "development": {
-              "buildTarget": "Learning-Management-System-Client:build:development"
+              "buildTarget": "learning-management-system-client:build:development"
             }
           },
           "defaultConfiguration": "development"
