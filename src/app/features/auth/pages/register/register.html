@@ -1,1 +1,90 @@
-<p>register works!</p>
+<div class="relative min-h-screen bg-slate-50 px-6 py-10">
+  <a
+    routerLink="/"
+    aria-label="Back to Home"
+    class="absolute left-6 top-5 inline-flex items-center gap-2 text-sm font-semibold text-gray-600 transition hover:text-gray-900 md:left-10 md:top-6">
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      class="h-5 w-5">
+
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M15.75 19.5 8.25 12l7.5-7.5" />
+    </svg>
+
+    Back to Home
+  </a>
+
+  <div class="mx-auto w-full max-w-md pt-8">
+    <div class="mb-8 text-center">
+      <a
+        routerLink="/"
+        class="text-2xl font-bold text-gray-900">
+        ClassHub
+      </a>
+
+      <h1 class="mt-5 text-3xl font-bold text-gray-900">
+        Create your account
+      </h1>
+
+      <p class="mt-2 text-gray-600">
+        Join ClassHub and start learning.
+      </p>
+    </div>
+
+    <app-card>
+      <form class="flex flex-col">
+        <app-input
+          label="First Name"
+          placeholder="Enter your first name" />
+
+        <div class="mt-4">
+          <app-input
+            label="Last Name"
+            placeholder="Enter your last name" />
+        </div>
+
+        <div class="mt-4">
+          <app-input
+            label="Email"
+            type="email"
+            placeholder="Enter your email" />
+        </div>
+
+        <div class="mt-4">
+          <app-password-input
+            label="Password"
+            placeholder="Create a password" />
+        </div>
+
+        <div class="mt-4">
+          <app-password-input
+            label="Confirm Password"
+            placeholder="Confirm your password" />
+        </div>
+
+        <div class="mt-6">
+          <app-button type="submit">
+            Create Account
+          </app-button>
+        </div>
+      </form>
+    </app-card>
+
+    <p class="mt-6 text-center text-sm text-gray-600">
+      Already have an account?
+
+      <a
+        routerLink="/login"
+        class="font-semibold text-blue-600 hover:text-blue-700">
+        Log In
+      </a>
+    </p>
+  </div>
+</div>
