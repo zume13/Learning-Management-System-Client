@@ -1,1 +1,185 @@
-<p>dashboard works!</p>
+<div class="flex h-screen bg-grey-100">
+
+    <aside class="w-64 bg-white shadow-lg flex flex-col">
+
+        <div class="h-20 flex items-center px-8 border-b">
+            <img src="" class="w-10 h-10">
+            <h1 class="ml-3 text-2xl font-bold text-indigo-600">
+                LMS
+            </h1>
+        </div>
+
+        <nav class="flex-1 mt-6">
+
+            <a class="flex items-center px-8 py-4 bg-indigo-100 text-indigo-600 font-semibold">
+                Dashboard
+            </a>
+
+            <a class="flex items-center px-8 py4 hover:bg-gray-100">
+                To-Do
+            </a>
+
+            <a class="flex items-center px-8 py-4 hover:bg-gray-100">
+                Calendar
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <main class="flex-1 overflow-y-auto">
+
+        <header class="h-20 bg-white shadow flex justify-end items-center px-8">
+
+            <button class="relative mr-8">
+
+                🔔
+                <span class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs px-2">
+
+                </span>
+            </button>
+
+            <div class="relative">
+
+                <button 
+                (click)="toggleDropdown()"
+                class="flex items-center space-x-3">
+
+                    <img
+                        src="https://www.pinterest.com/ideas/no-profile-picture-facebook-icon/959123206160/"
+                        class="w-10 h-10 rounded-full">
+
+                    <span class="font-medium">
+                        <!--Name Here--> Juan Dela Cruz
+                    </span>
+
+                    ▼
+
+                </button>
+
+                <div
+                    *ngIf="showDropdown"
+                    class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-xl">
+
+                    <a class="block px-6 py-4 hover:bg-gray-100">
+                        Profile
+                    </a>
+
+                    <a class="block px-6 py-4 hover:bg-gray-100">
+                        Settings
+                    </a>
+
+                    <a class="block px-6 py-4 hover:bg-gray-100">
+                        Log Out
+                    </a>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <div class="p-10">
+
+            <h1 class="text-4xl font-bold">
+                Dashboard
+            </h1>
+
+            <p class="text-gray-500 mt-2">
+                Welcome back! Here's your pending tasks.
+            </p>
+
+            <div class="mt-10 bg-white rounded-3xl shadow p-8">
+
+                <div class="flex justify-between items-center">
+
+                    <div>
+
+                        <h2 class="text-2xl font-bold">
+                            To-Do
+                        </h2>
+
+                        <p class="texxt-gray-500">
+                            Pending Tasks
+                        </p>
+
+                    </div>
+
+                    <button class="text-indigo-600 font-semibold">
+                        View All →
+                    </button>
+
+                </div>
+
+                <div class="mt-8 space-y-5">
+
+                    <div class="flex justify-between border-b pb-4">
+
+                        <!--Add Task Here-->
+                        <!--Sample Task-->
+                        <span>Finish Angular Dashboard</span>
+
+                    </div>
+
+                </div>
+
+                <hr class="my-8">
+
+                <div class="text-center">
+
+                    <button class="text-indigo-600 font-semibold">
+                        View All Tasks →
+                    </button>
+
+                </div>
+
+            </div>
+            
+            <div class="mt-12">
+
+                <div class="flex justify-between">
+
+                    <h2 class="text-3xl font-bold">
+                        Your Courses
+                    </h2>
+
+                    <button class="text-indigo-600">
+                        View All
+                    </button>
+
+                </div>
+
+                <!--Card Creation Sample-->
+                <div class="grid grid-cols-3 gap-8 mt-8">
+
+                    <div class="rounded-2xxl shadow overflow-hidden bg-white">
+
+                        <div class="h-32 bg-indigo-600"></div>
+
+                        <div class="p-5">
+
+                            <h3 class="font-bold text-xl">
+                                Web Development
+                            </h3>
+
+                            <p class="text-gray mt-2">
+                                Mr. John Santos
+                            </p>
+
+                            <p class="mt-5 text-sm">
+                                Build Portfolio Website
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
