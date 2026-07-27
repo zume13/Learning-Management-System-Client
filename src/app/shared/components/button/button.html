@@ -1,1 +1,16 @@
-<p>button works!</p>
+<button
+  class="button"
+  [type]="type()"
+  class="rounded- lg px-5 py-2.5 font-semibold transition duration-200"
+  [class.bg-blue-600]="variant() === 'primary'"
+  [class.text-white]="variant() === 'primary'"
+  [class.hover:bg-blue-700]="variant() === 'primary'"
+  [class.border]="variant() === 'secondary'"
+  [class.border-gray-300]="variant() === 'secondary'"
+  [class.text-gray-700]="variant() === 'secondary'"
+  [class.hover:bg-gray-50]="variant() === 'secondary'"
+  [class.bg-red-600]="variant() === 'danger'"
+  [class.text-white]="variant() === 'danger'"
+  [class.hover:bg-red-700]="variant() === 'danger'">
+<ng-content />
+</button>
