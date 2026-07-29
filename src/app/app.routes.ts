@@ -3,6 +3,8 @@ import { Dashboard } from './features/dashboard/pages/dashboard/dashboard';
 import { Home } from './features/home/pages/home/home';
 import { Login } from './features/auth/pages/login/login';
 import { Register } from './features/auth/pages/register/register';
+import { Todo } from './features/todo/pages/todo/todo';
+import { DashboardLayout } from './shared/components/dashboard-layout/dashboard-layout';
 
 export const routes: Routes = [
   {
@@ -18,8 +20,18 @@ export const routes: Routes = [
     component: Register
   },
   {
-    path: 'dashboard',
-    component: Dashboard
+    path: '',
+    component: DashboardLayout,
+    children: [
+      {
+        path: 'dashboard',
+        component: Dashboard
+      },
+      {
+        path: 'todo',
+        component: Todo
+      }
+    ]
   },
   {
     path: '**',

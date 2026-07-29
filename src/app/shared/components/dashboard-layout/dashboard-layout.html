@@ -1,0 +1,195 @@
+<div class="flex h-screen bg-gray-100">
+
+  <aside class="flex w-64 flex-col bg-white shadow-lg">
+
+    <div class="flex h-20 items-center border-b px-8">
+
+      <div
+        class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 font-bold text-white">
+        C
+      </div>
+
+      <h1 class="ml-3 text-2xl font-bold text-indigo-600">
+        ClassHub
+      </h1>
+
+    </div>
+
+    <nav class="mt-6 flex-1">
+
+      <a
+        routerLink="/dashboard"
+        routerLinkActive="bg-indigo-100 font-semibold text-indigo-600"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="flex cursor-pointer items-center gap-3 bg-indigo-100 px-8 py-4 font-semibold text-indigo-600">
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.8"
+          stroke="currentColor"
+          class="h-5 w-5">
+
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m2.25 12 8.954-8.954a1.125 1.125 0 0 1 1.592 0L21.75 12M4.5 9.75v10.125A1.125 1.125 0 0 0 5.625 21h4.125v-5.25h4.5V21h4.125a1.125 1.125 0 0 0 1.125-1.125V9.75" />
+        </svg>
+
+        Dashboard
+
+      </a>
+
+      <a
+        routerLink="/todo"
+        routerLinkActive="bg-indigo-100 font-semibold text-indigo-600"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="flex cursor-pointer items-center gap-3 px-8 py-4 text-gray-600 transition hover:bg-gray-100 hover:text-gray-900">
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.8"
+          stroke="currentColor"
+          class="h-5 w-5">
+
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+
+        To-Do
+
+      </a>
+
+      <a
+        routerLink="/calendar"
+        routerLinkActive="bg-indigo-100 font-semibold text-indigo-600"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="flex cursor-pointer items-center gap-3 px-8 py-4 text-gray-600 transition hover:bg-gray-100 hover:text-gray-900">
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.8"
+          stroke="currentColor"
+          class="h-5 w-5">
+
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6.75 3v2.25M17.25 3v2.25M3.75 9h16.5M5.25 5.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25A2.25 2.25 0 0 1 18.75 21H5.25A2.25 2.25 0 0 1 3 18.75V7.5A2.25 2.25 0 0 1 5.25 5.25Z" />
+        </svg>
+
+        Calendar
+
+      </a>
+
+    </nav>
+
+  </aside>
+
+
+  <main class="flex-1 overflow-y-auto">
+
+    <header class="flex h-20 items-center justify-end bg-white px-8 shadow">
+
+      <button
+        class="relative mr-8 cursor-pointer text-gray-600 transition hover:text-gray-900"
+        aria-label="Notifications">
+
+        <svg
+          lucideBell
+          class="h-5 w-5">
+        </svg>
+
+      </button>
+
+
+      <div class="relative">
+
+        <button
+          (click)="toggleDropdown()"
+          class="flex cursor-pointer items-center gap-3"
+          aria-label="User menu">
+
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100 font-bold text-indigo-600">
+            JD
+          </div>
+
+          <span class="font-medium text-gray-700">
+            Juan Dela Cruz
+          </span>
+
+          <svg
+            lucideChevronDown
+            class="h-4 w-4 text-gray-500">
+          </svg>
+
+        </button>
+
+
+        @if (showDropdown) {
+
+          <div
+            class="absolute right-0 mt-3 w-56 overflow-hidden rounded-xl bg-white shadow-xl">
+
+            <a
+              class="flex cursor-pointer items-center gap-3 px-6 py-4 text-gray-700 transition hover:bg-gray-100">
+
+              <svg
+                lucideUser
+                class="h-5 w-5 text-gray-500">
+              </svg>
+
+              Profile
+
+            </a>
+
+
+            <a
+              class="flex cursor-pointer items-center gap-3 px-6 py-4 text-gray-700 transition hover:bg-gray-100">
+
+              <svg
+                lucideSettings
+                class="h-5 w-5 text-gray-500">
+              </svg>
+
+              Settings
+
+            </a>
+
+
+            <div class="border-t"></div>
+
+
+            <button
+              class="flex w-full cursor-pointer items-center gap-3 px-6 py-4 text-left text-red-600 transition hover:bg-red-50">
+
+              <svg
+                lucideLogOut
+                class="h-5 w-5">
+              </svg>
+
+              Log Out
+
+            </button>
+
+          </div>
+
+        }
+
+      </div>
+
+    </header>
+
+    <router-outlet />
+
+  </main>
+
+</div>
