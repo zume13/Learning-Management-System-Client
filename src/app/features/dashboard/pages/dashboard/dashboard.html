@@ -22,19 +22,16 @@
         </p>
       </div>
 
-      <button
-        class="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-700">
-        View All →
-      </button>
-
     </div>
 
     <div class="mt-8 space-y-5">
 
       <div class="flex justify-between border-b pb-4">
+
         <span class="text-gray-700">
           Finish Angular Dashboard
         </span>
+
       </div>
 
     </div>
@@ -43,10 +40,12 @@
 
     <div class="text-center">
 
-      <button
-        class="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-700">
-        View All Tasks →
-      </button>
+      <a
+        routerLink="/todo"
+        class="inline-flex cursor-pointer items-center gap-2 font-semibold text-indigo-600 transition hover:text-indigo-700">
+
+        View All
+      </a>
 
     </div>
 
@@ -69,27 +68,11 @@
 
     <div class="mt-8 grid grid-cols-3 gap-8">
 
-      <div class="overflow-hidden rounded-2xl bg-white shadow">
-
-        <div class="h-32 bg-indigo-600"></div>
-
-        <div class="p-5">
-
-          <h3 class="text-xl font-bold text-gray-900">
-            Web Development
-          </h3>
-
-          <p class="mt-2 text-gray-500">
-            Mr. John Santos
-          </p>
-
-          <p class="mt-5 text-sm text-gray-600">
-            Build Portfolio Website
-          </p>
-
-        </div>
-
-      </div>
+      <app-course-card
+        title="Web Development"
+        instructor="Mr. John Santos"
+        assignment="Build Portfolio Website">
+      </app-course-card>
 
     </div>
 
