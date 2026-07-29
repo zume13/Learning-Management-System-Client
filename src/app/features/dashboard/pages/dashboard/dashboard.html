@@ -1,256 +1,91 @@
-<div class="flex h-screen bg-gray-100">
+<div class="p-10">
 
-  <aside class="flex w-64 flex-col bg-white shadow-lg">
+  <h1 class="text-4xl font-bold text-gray-900">
+    Dashboard
+  </h1>
 
-    <div class="flex h-20 items-center border-b px-8">
-      <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 font-bold text-white">
-        C
+  <p class="mt-2 text-gray-500">
+    Welcome back! Here's your pending tasks.
+  </p>
+
+  <div class="mt-10 rounded-3xl bg-white p-8 shadow">
+
+    <div class="flex items-center justify-between">
+
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900">
+          To-Do
+        </h2>
+
+        <p class="mt-1 text-gray-500">
+          Pending Tasks
+        </p>
       </div>
-
-      <h1 class="ml-3 text-2xl font-bold text-indigo-600">
-        ClassHub
-      </h1>
-    </div>
-
-    <nav class="mt-6 flex-1">
-
-      <a
-        routerLink="/dashboard"
-        class="flex cursor-pointer items-center gap-3 bg-indigo-100 px-8 py-4 font-semibold text-indigo-600">
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.8"
-          stroke="currentColor"
-          class="h-5 w-5">
-
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="m2.25 12 8.954-8.954a1.125 1.125 0 0 1 1.592 0L21.75 12M4.5 9.75v10.125A1.125 1.125 0 0 0 5.625 21h4.125v-5.25h4.5V21h4.125a1.125 1.125 0 0 0 1.125-1.125V9.75" />
-        </svg>
-
-        Dashboard
-      </a>
-
-      <a
-        class="flex cursor-pointer items-center gap-3 px-8 py-4 text-gray-600 transition hover:bg-gray-100 hover:text-gray-900">
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.8"
-          stroke="currentColor"
-          class="h-5 w-5">
-
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-        </svg>
-
-        To-Do
-      </a>
-
-      <a
-        class="flex cursor-pointer items-center gap-3 px-8 py-4 text-gray-600 transition hover:bg-gray-100 hover:text-gray-900">
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.8"
-          stroke="currentColor"
-          class="h-5 w-5">
-
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6.75 3v2.25M17.25 3v2.25M3.75 9h16.5M5.25 5.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25A2.25 2.25 0 0 1 18.75 21H5.25A2.25 2.25 0 0 1 3 18.75V7.5A2.25 2.25 0 0 1 5.25 5.25Z" />
-        </svg>
-
-        Calendar
-      </a>
-
-    </nav>
-
-  </aside>
-
-  <main class="flex-1 overflow-y-auto">
-
-    <header class="flex h-20 items-center justify-end bg-white px-8 shadow">
 
       <button
-        class="relative mr-8 cursor-pointer text-gray-600 transition hover:text-gray-900"
-        aria-label="Notifications">
-
-        <svg
-          lucideBell
-          class="h-5 w-5">
-        </svg>
-
+        class="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-700">
+        View All →
       </button>
 
-      <div class="relative">
+    </div>
 
-        <button
-          (click)="toggleDropdown()"
-          class="flex cursor-pointer items-center gap-3"
-          aria-label="User menu">
+    <div class="mt-8 space-y-5">
 
-          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100 font-bold text-indigo-600">
-            JD
-          </div>
-
-          <span class="font-medium text-gray-700">
-            Juan Dela Cruz
-          </span>
-
-          <svg
-            lucideChevronDown
-            class="h-4 w-4 text-gray-500">
-          </svg>
-
-        </button>
-
-        @if (showDropdown) {
-          <div
-            class="absolute right-0 mt-3 w-56 overflow-hidden rounded-xl bg-white shadow-xl">
-
-            <a
-              class="flex cursor-pointer items-center gap-3 px-6 py-4 text-gray-700 transition hover:bg-gray-100">
-
-              <svg
-                lucideUser
-                class="h-5 w-5 text-gray-500">
-              </svg>
-
-              Profile
-            </a>
-
-            <a
-              class="flex cursor-pointer items-center gap-3 px-6 py-4 text-gray-700 transition hover:bg-gray-100">
-
-              <svg
-                lucideSettings
-                class="h-5 w-5 text-gray-500">
-              </svg>
-
-              Settings
-            </a>
-
-            <div class="border-t"></div>
-
-            <button
-              class="flex w-full cursor-pointer items-center gap-3 px-6 py-4 text-left text-red-600 transition hover:bg-red-50">
-
-              <svg
-                lucideLogOut
-                class="h-5 w-5">
-              </svg>
-
-              Log Out
-            </button>
-
-          </div>
-        }
-
+      <div class="flex justify-between border-b pb-4">
+        <span class="text-gray-700">
+          Finish Angular Dashboard
+        </span>
       </div>
 
-    </header>
+    </div>
 
-    <div class="p-10">
+    <hr class="my-8">
 
-      <h1 class="text-4xl font-bold text-gray-900">
-        Dashboard
-      </h1>
+    <div class="text-center">
 
-      <p class="mt-2 text-gray-500">
-        Welcome back! Here's your pending tasks.
-      </p>
+      <button
+        class="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-700">
+        View All Tasks →
+      </button>
 
-      <div class="mt-10 rounded-3xl bg-white p-8 shadow">
+    </div>
 
-        <div class="flex items-center justify-between">
+  </div>
 
-          <div>
-            <h2 class="text-2xl font-bold text-gray-900">
-              To-Do
-            </h2>
+  <div class="mt-12">
 
-            <p class="mt-1 text-gray-500">
-              Pending Tasks
-            </p>
-          </div>
+    <div class="flex items-center justify-between">
 
-          <button class="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-700">
-            View All →
-          </button>
+      <h2 class="text-3xl font-bold text-gray-900">
+        Your Courses
+      </h2>
 
-        </div>
+      <button
+        class="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-700">
+        View All
+      </button>
 
-        <div class="mt-8 space-y-5">
+    </div>
 
-          <div class="flex justify-between border-b pb-4">
-            <span class="text-gray-700">
-              Finish Angular Dashboard
-            </span>
-          </div>
+    <div class="mt-8 grid grid-cols-3 gap-8">
 
-        </div>
+      <div class="overflow-hidden rounded-2xl bg-white shadow">
 
-        <hr class="my-8">
+        <div class="h-32 bg-indigo-600"></div>
 
-        <div class="text-center">
+        <div class="p-5">
 
-          <button class="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-700">
-            View All Tasks →
-          </button>
+          <h3 class="text-xl font-bold text-gray-900">
+            Web Development
+          </h3>
 
-        </div>
+          <p class="mt-2 text-gray-500">
+            Mr. John Santos
+          </p>
 
-      </div>
-
-      <div class="mt-12">
-
-        <div class="flex items-center justify-between">
-
-          <h2 class="text-3xl font-bold text-gray-900">
-            Your Courses
-          </h2>
-
-          <button class="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-700">
-            View All
-          </button>
-
-        </div>
-
-        <div class="mt-8 grid grid-cols-3 gap-8">
-
-          <div class="overflow-hidden rounded-2xl bg-white shadow">
-
-            <div class="h-32 bg-indigo-600"></div>
-
-            <div class="p-5">
-
-              <h3 class="text-xl font-bold text-gray-900">
-                Web Development
-              </h3>
-
-              <p class="mt-2 text-gray-500">
-                Mr. John Santos
-              </p>
-
-              <p class="mt-5 text-sm text-gray-600">
-                Build Portfolio Website
-              </p>
-
-            </div>
-
-          </div>
+          <p class="mt-5 text-sm text-gray-600">
+            Build Portfolio Website
+          </p>
 
         </div>
 
@@ -258,6 +93,6 @@
 
     </div>
 
-  </main>
+  </div>
 
 </div>
