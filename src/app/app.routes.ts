@@ -5,6 +5,7 @@ import { Login } from './features/auth/pages/login/login';
 import { Register } from './features/auth/pages/register/register';
 import { Todo } from './features/todo/pages/todo/todo';
 import { DashboardLayout } from './shared/components/dashboard-layout/dashboard-layout';
+import { CourseLayout } from './shared/components/course-layout/course-layout/course-layout';
 
 export const routes: Routes = [
   {
@@ -30,11 +31,15 @@ export const routes: Routes = [
       {
         path: 'todo',
         component: Todo
-      }
+      },
+      {
+        path: 'courselayout',
+        component: CourseLayout
+      },
     ]
   },
   {
     path: '**',
     redirectTo: ''
-  }
+  },
 ];
