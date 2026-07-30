@@ -1,8 +1,8 @@
-<div class="flex h-screen bg-gray-100">
+<div class="flex h-screen overflow-hidden bg-gray-100">
 
-  <aside class="flex w-64 flex-col bg-white shadow-lg">
+  <aside class="flex w-64 shrink-0 flex-col bg-white">
 
-    <div class="flex h-20 items-center border-b px-8">
+    <div class="flex h-20 shrink-0 items-center px-8">
 
       <div
         class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 font-bold text-white">
@@ -21,7 +21,7 @@
         routerLink="/dashboard"
         routerLinkActive="bg-indigo-100 font-semibold text-indigo-600"
         [routerLinkActiveOptions]="{ exact: true }"
-        class="flex cursor-pointer items-center gap-3 bg-indigo-100 px-8 py-4 font-semibold text-indigo-600">
+        class="flex cursor-pointer items-center gap-3 px-8 py-4 text-gray-600 transition hover:bg-gray-100 hover:text-gray-900">
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -94,9 +94,9 @@
   </aside>
 
 
-  <main class="flex-1 overflow-y-auto">
+  <div class="flex min-w-0 flex-1 flex-col">
 
-    <header class="flex h-20 items-center justify-end bg-white px-8 shadow">
+    <header class="flex h-20 items-center justify-end bg-white px-8">
 
       <button
         class="relative mr-8 cursor-pointer text-gray-600 transition hover:text-gray-900"
@@ -188,8 +188,14 @@
 
     </header>
 
-    <router-outlet />
 
-  </main>
+    <main
+      class="flex-1 overflow-y-auto shadow-[inset_6px_6px_10px_-10px_rgba(0,0,0,0.25)]">
+
+      <router-outlet />
+
+    </main>
+
+  </div>
 
 </div>
