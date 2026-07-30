@@ -74,12 +74,22 @@
 
     <div class="mt-8 grid grid-cols-3 gap-8">
 
-      <app-course-card
-        title="Web Development"
-        instructor="Mr. John Santos"
-        assignment="Build Portfolio Website">
-      </app-course-card>
+      <a 
+        routerLink="/courselayout"
+        [state]="{
+          title:'Web Development',
+          instructor: 'Mr. John Santos',
+          description: 'Learn HTML,  CSS, and JAVASCRIPT fundamentals.'
+        }">
 
+        <app-course-card
+          title="Web Development"
+          instructor="Mr. John Santos"
+          assignment="Build Portfolio Website">
+        </app-course-card>
+
+      </a>
+      
     </div>
 
   </div>
