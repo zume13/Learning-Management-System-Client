@@ -23,7 +23,8 @@ export class DashboardLayout {
   private themeService = inject(Theme);
 
   showDropdown = false;
-  sidebarCollapsed = false;
+
+  sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
 
   get isDarkMode() {
     return this.themeService.isDarkMode();
@@ -35,6 +36,11 @@ export class DashboardLayout {
 
   toggleSidebar() {
     this.sidebarCollapsed = !this.sidebarCollapsed;
+
+    localStorage.setItem(
+      'sidebarCollapsed',
+      String(this.sidebarCollapsed)
+    );
   }
 
   toggleTheme() {
