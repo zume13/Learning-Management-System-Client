@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { LucideBell, LucideChevronDown, LucideLogOut, LucideSettings, LucideUser } from '@lucide/angular';
+import { LucideBell, LucideChevronDown, LucideChevronLeft, LucideChevronRight, LucideLogOut, LucideMoon, LucideSettings, LucideSun, LucideUser } from '@lucide/angular';
+import { Theme } from '../../../core/services/theme';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -11,13 +12,25 @@ import { LucideBell, LucideChevronDown, LucideLogOut, LucideSettings, LucideUser
             LucideChevronDown,
             LucideUser,
             LucideSettings,
-            LucideLogOut],
+            LucideLogOut,
+            LucideChevronLeft,
+            LucideChevronRight,
+            LucideSun,
+            LucideMoon],
   templateUrl: './dashboard-layout.html',
   styleUrl: './dashboard-layout.css',
 })
 export class DashboardLayout {
+  
+  private themeService = inject(Theme);
+
   showDropdown = false;
-  sidebarCollapsed = false;
+
+  sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+
+  get isDarkMode() {
+    return this.themeService.isDarkMode();
+  }
 
   toggleDropdown() {
     this.showDropdown = !this.showDropdown;
@@ -25,5 +38,14 @@ export class DashboardLayout {
 
   toggleSidebar() {
     this.sidebarCollapsed = !this.sidebarCollapsed;
+
+    localStorage.setItem(
+      'sidebarCollapsed',
+      String(this.sidebarCollapsed)
+    );
+  }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 }
