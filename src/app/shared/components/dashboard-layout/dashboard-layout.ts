@@ -17,8 +17,13 @@ import { LucideBell, LucideChevronDown, LucideLogOut, LucideSettings, LucideUser
 })
 export class DashboardLayout {
   showDropdown = false;
+  sidebarCollapsed = false;
 
   toggleDropdown() {
     this.showDropdown = !this.showDropdown;
+  }
+
+  toggleSidebar() {
+    this.sidebarCollapsed = !this.sidebarCollapsed;
   }
 }
