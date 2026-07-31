@@ -1,34 +1,38 @@
-<div class="p-10">
+<div class="min-h-full bg-gray-50 p-10 text-gray-900 dark:bg-[#080b0f] dark:text-[#f0f6fc]">
 
-  <h1 class="text-4xl font-bold text-gray-900">
+  <h1 class="text-4xl font-bold text-gray-900 dark:text-[#f0f6fc]">
     Dashboard
   </h1>
 
-  <p class="mt-2 text-gray-500">
+  <p class="mt-2 text-gray-500 dark:text-[#8b949e]">
     Welcome back! Here's your pending tasks.
   </p>
 
-  <div class="mt-10 rounded-3xl bg-white p-8 shadow">
+
+  <div
+    class="mt-10 rounded-3xl bg-white p-8 shadow transition-colors duration-300 dark:bg-[#161b22]">
 
     <div class="flex items-center justify-between">
 
       <div>
-        <h2 class="text-2xl font-bold text-gray-900">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-[#f0f6fc]">
           To-Do
         </h2>
 
-        <p class="mt-1 text-gray-500">
+        <p class="mt-1 text-gray-500 dark:text-[#8b949e]">
           Pending Tasks
         </p>
       </div>
 
     </div>
 
+
     <div class="mt-8 space-y-5">
 
-      <div class="flex justify-between border-b pb-4">
+      <div
+        class="flex justify-between border-b border-gray-200 pb-4 transition-colors duration-300 dark:border-[#30363d]">
 
-        <span class="text-gray-700">
+        <span class="text-gray-700 dark:text-[#c9d1d9]">
           Finish Angular Dashboard
         </span>
 
@@ -36,50 +40,56 @@
 
     </div>
 
-    <hr class="my-8">
+
+    <hr class="my-8 border-gray-200 dark:border-[#30363d]">
+
 
     <div class="text-center">
 
       <a
         routerLink="/todo"
-        class="inline-flex cursor-pointer items-center gap-2 font-semibold text-indigo-600 transition hover:text-indigo-700">
+        class="inline-flex cursor-pointer items-center gap-2 font-semibold text-indigo-600 transition-colors duration-300 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300">
 
         View All
+
       </a>
 
     </div>
 
   </div>
 
+
   <div class="mt-12">
 
     <div class="flex items-center justify-between">
 
-      <h2 class="text-3xl font-bold text-gray-900">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-[#f0f6fc]">
         Your Courses
       </h2>
 
       <a
         routerLink="/classes"
-        class="flex cursor-pointer items-center gap-2 rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:bg-indigo-700">
-        
+        class="flex cursor-pointer items-center gap-2 rounded-2xl bg-indigo-600 px-5 py-3 font-semibold text-white transition-colors duration-300 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-500">
+
         <span class="text-xl leading-none">
           +
         </span>
-        
+
         Add Classes
+
       </a>
 
     </div>
 
+
     <div class="mt-8 grid grid-cols-3 gap-8">
 
-      <a 
+      <a
         routerLink="/courselayout"
         [state]="{
-          title:'Web Development',
+          title: 'Web Development',
           instructor: 'Mr. John Santos',
-          description: 'Learn HTML,  CSS, and JAVASCRIPT fundamentals.'
+          description: 'Learn HTML, CSS, and JAVASCRIPT fundamentals.'
         }">
 
         <app-course-card
@@ -89,7 +99,7 @@
         </app-course-card>
 
       </a>
-      
+
     </div>
 
   </div>

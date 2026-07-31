@@ -13,6 +13,8 @@ export class Theme {
     if (savedTheme === 'dark') {
       this.isDarkMode.set(true);
     }
+
+    this.applyTheme();
   }
 
   toggleTheme() {
@@ -21,6 +23,15 @@ export class Theme {
     localStorage.setItem(
       'theme',
       this.isDarkMode() ? 'dark' : 'light'
+    );
+
+    this.applyTheme();
+  }
+
+  private applyTheme() {
+    document.documentElement.classList.toggle(
+      'dark',
+      this.isDarkMode()
     );
   }
 }
