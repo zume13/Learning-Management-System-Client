@@ -18,21 +18,51 @@
   <div class="mt-8 flex gap-3">
 
     <button
-      class="cursor-pointer rounded-lg bg-indigo-100 px-5 py-2 font-semibold text-indigo-600 transition-colors duration-300 dark:bg-[#1f2937] dark:text-indigo-400">
+      (click)="setFilter('all')"
+      class="cursor-pointer rounded-lg px-5 py-2 transition-colors duration-300"
+      [class.bg-indigo-100]="activeFilter === 'all'"
+      [class.font-semibold]="activeFilter === 'all'"
+      [class.text-indigo-600]="activeFilter === 'all'"
+      [class.dark:bg-[#1f2937]]="activeFilter === 'all'"
+      [class.dark:text-indigo-400]="activeFilter === 'all'"
+      [class.text-gray-600]="activeFilter !== 'all'"
+      [class.dark:text-[#8b949e]]="activeFilter !== 'all'"
+      [class.hover:bg-gray-100]="activeFilter !== 'all'"
+      [class.dark:hover:bg-[#21262d]]="activeFilter !== 'all'">
 
       All
 
     </button>
 
     <button
-      class="cursor-pointer rounded-lg px-5 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-900 dark:text-[#8b949e] dark:hover:bg-[#21262d] dark:hover:text-[#f0f6fc]">
+      (click)="setFilter('pending')"
+      class="cursor-pointer rounded-lg px-5 py-2 transition-colors duration-300"
+      [class.bg-indigo-100]="activeFilter === 'pending'"
+      [class.font-semibold]="activeFilter === 'pending'"
+      [class.text-indigo-600]="activeFilter === 'pending'"
+      [class.dark:bg-[#1f2937]]="activeFilter === 'pending'"
+      [class.dark:text-indigo-400]="activeFilter === 'pending'"
+      [class.text-gray-600]="activeFilter !== 'pending'"
+      [class.dark:text-[#8b949e]]="activeFilter !== 'pending'"
+      [class.hover:bg-gray-100]="activeFilter !== 'pending'"
+      [class.dark:hover:bg-[#21262d]]="activeFilter !== 'pending'">
 
       Pending
 
     </button>
 
     <button
-      class="cursor-pointer rounded-lg px-5 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-900 dark:text-[#8b949e] dark:hover:bg-[#21262d] dark:hover:text-[#f0f6fc]">
+      (click)="setFilter('completed')"
+      class="cursor-pointer rounded-lg px-5 py-2 transition-colors duration-300"
+      [class.bg-indigo-100]="activeFilter === 'completed'"
+      [class.font-semibold]="activeFilter === 'completed'"
+      [class.text-indigo-600]="activeFilter === 'completed'"
+      [class.dark:bg-[#1f2937]]="activeFilter === 'completed'"
+      [class.dark:text-indigo-400]="activeFilter === 'completed'"
+      [class.text-gray-600]="activeFilter !== 'completed'"
+      [class.dark:text-[#8b949e]]="activeFilter !== 'completed'"
+      [class.hover:bg-gray-100]="activeFilter !== 'completed'"
+      [class.dark:hover:bg-[#21262d]]="activeFilter !== 'completed'">
 
       Completed
 
@@ -45,127 +75,84 @@
     class="mt-6 overflow-hidden rounded-2xl bg-white shadow transition-colors duration-300 dark:bg-[#161b22]">
 
 
-    <!-- Pending Task -->
+    @for (task of filteredTasks; track task.title) {
 
-    <div
-      class="flex items-center justify-between border-b border-gray-200 px-6 py-5 transition-colors duration-300 hover:bg-gray-50 dark:border-[#30363d] dark:hover:bg-[#21262d]">
+  <div
+    class="flex items-center justify-between border-gray-200 px-6 py-5 transition-colors duration-300 hover:bg-gray-50 dark:border-[#30363d] dark:hover:bg-[#21262d]"
+    [class.border-b]="!$last">
 
-      <div class="flex items-center gap-4">
+    <div class="flex items-center gap-4">
 
-        <button
-          class="flex h-5 w-5 cursor-pointer items-center justify-center rounded border-2 border-gray-300 transition-colors duration-300 hover:border-indigo-500 dark:border-[#484f58] dark:hover:border-indigo-400">
-        </button>
+      <button
+        type="button"
+        (click)="toggleTask(task)"
+        class="flex h-5 w-5 cursor-pointer items-center justify-center rounded border-2 text-sm transition-colors duration-300"
+        [class.border-gray-300]="!task.completed"
+        [class.hover:border-indigo-500]="!task.completed"
+        [class.dark:border-[#484f58]]="!task.completed"
+        [class.dark:hover:border-indigo-400]="!task.completed"
+        [class.border-indigo-600]="task.completed"
+        [class.bg-indigo-600]="task.completed"
+        [class.text-white]="task.completed"
+        [class.dark:border-indigo-500]="task.completed"
+        [class.dark:bg-indigo-500]="task.completed">
 
-        <div>
-
-          <h2 class="font-semibold text-gray-900 dark:text-[#f0f6fc]">
-            Finish Angular Dashboard
-          </h2>
-
-          <p class="mt-1 text-sm text-gray-500 dark:text-[#8b949e]">
-            Web Development
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="text-right">
-
-        <p class="text-sm font-medium text-red-600 dark:text-red-400">
-          Due Today
-        </p>
-
-        <p class="mt-1 text-xs text-gray-400 dark:text-[#8b949e]">
-          High Priority
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <!-- Pending Task -->
-
-    <div
-      class="flex items-center justify-between border-b border-gray-200 px-6 py-5 transition-colors duration-300 hover:bg-gray-50 dark:border-[#30363d] dark:hover:bg-[#21262d]">
-
-      <div class="flex items-center gap-4">
-
-        <button
-          class="flex h-5 w-5 cursor-pointer items-center justify-center rounded border-2 border-gray-300 transition-colors duration-300 hover:border-indigo-500 dark:border-[#484f58] dark:hover:border-indigo-400">
-        </button>
-
-        <div>
-
-          <h2 class="font-semibold text-gray-900 dark:text-[#f0f6fc]">
-            Read Chapter 4
-          </h2>
-
-          <p class="mt-1 text-sm text-gray-500 dark:text-[#8b949e]">
-            Database Systems
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="text-right">
-
-        <p class="text-sm font-medium text-orange-500 dark:text-orange-400">
-          Due Aug 2
-        </p>
-
-        <p class="mt-1 text-xs text-gray-400 dark:text-[#8b949e]">
-          Medium Priority
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <!-- Completed Task -->
-
-    <div
-      class="flex items-center justify-between px-6 py-5 transition-colors duration-300 hover:bg-gray-50 dark:hover:bg-[#21262d]">
-
-      <div class="flex items-center gap-4">
-
-        <button
-          class="flex h-5 w-5 cursor-pointer items-center justify-center rounded border-2 border-indigo-600 bg-indigo-600 text-sm text-white transition-colors duration-300 dark:border-indigo-500 dark:bg-indigo-500">
-
+        @if (task.completed) {
           ✓
+        }
 
-        </button>
+      </button>
 
-        <div>
+      <div>
 
-          <h2 class="font-semibold text-gray-400 line-through dark:text-[#8b949e]">
-            Submit UI/UX Wireframe
-          </h2>
+        <h2
+          class="font-semibold"
+          [class.text-gray-900]="!task.completed"
+          [class.text-gray-400]="task.completed"
+          [class.dark:text-[#f0f6fc]]="!task.completed"
+          [class.dark:text-[#8b949e]]="task.completed"
+          [class.line-through]="task.completed">
 
-          <p class="mt-1 text-sm text-gray-400 dark:text-[#8b949e]">
-            UI/UX Design
-          </p>
+          {{ task.title }}
 
-        </div>
+        </h2>
 
-      </div>
-
-
-      <div class="text-right">
-
-        <p class="text-sm font-medium text-green-600 dark:text-green-400">
-          Completed
+        <p class="mt-1 text-sm text-gray-500 dark:text-[#8b949e]">
+          {{ task.subject }}
         </p>
 
       </div>
 
     </div>
 
+    <div class="text-right">
+
+      <p
+        class="text-sm font-medium"
+        [class.text-red-600]="!task.completed && task.priority === 'High Priority'"
+        [class.dark:text-red-400]="!task.completed && task.priority === 'High Priority'"
+        [class.text-orange-500]="!task.completed && task.priority === 'Medium Priority'"
+        [class.dark:text-orange-400]="!task.completed && task.priority === 'Medium Priority'"
+        [class.text-green-600]="task.completed"
+        [class.dark:text-green-400]="task.completed">
+
+        {{ task.completed ? 'Completed' : task.due }}
+
+      </p>
+
+      @if (!task.completed) {
+
+        <p class="mt-1 text-xs text-gray-400 dark:text-[#8b949e]">
+          {{ task.priority }}
+        </p>
+
+      }
+
+    </div>
+
+  </div>
+
+}
 
   </div>
 
