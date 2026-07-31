@@ -1,11 +1,9 @@
 import { Component, input } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { CourseCard } from '../../course-card/course-card';
-import { Dashboard } from '../../../../features/dashboard/pages/dashboard/dashboard';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-course-layout',
-  imports: [RouterLink, CourseCard],
+  imports: [RouterLink, RouterOutlet, RouterLinkActive],
   templateUrl: './course-layout.html',
   styleUrl: './course-layout.css',
 })

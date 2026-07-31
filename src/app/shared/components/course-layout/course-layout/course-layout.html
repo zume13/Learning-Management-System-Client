@@ -16,44 +16,38 @@
 
     </div>
 
-    <div class="space-y-8">
+    <div class="bg-white rounded-xl shadow mb-6">
 
-        <section>
+        <nav class="flex">
 
-            <h2 class="text-xl font-semibold text-gray-700 mb-4">
-                Module 1: Introduction to Programming
-            </h2>
+            <a
+                routerLink="./activity"
+                routerLinkActive="text-indigo-600 border-b-2 border-indigo-600"
+                class="inline-block px-6 py-4 text-gray-500">
+                Activity
+            </a>
 
-            <div class=" rounded-xl shadow-sm border p-5 mb-4">
+            <a
+                routerLink="./people"
+                routerLinkActive="text-indigo-600 border-b-2 border-indigo-600"
+                class="inline-block px-6 py-4 text-gray-500">
+                People
+            </a>
 
-                <div class="flex justify-between">
+            <a
+                routerLink="./info"
+                routerLinkActive="text-indigo-600 border-b-2 border-indigo-600"
+                class="inline-block px-6 py-4 text-gray-500">
+                Info
+            </a>
 
-                    <div>
-                        <h3 class="font-semibold text-lg">
-                            Activity 1: Create your first HTML page
-                        </h3>
-
-                        <p class="text-gray-500 text-sm mt-2">
-                            Create a basic HTML page using HTML tags.
-                        </p>
-
-                        <p class="text-red-600 text-sm mt-3">
-                            Due: Tomorrow
-                        </p>
-
-                    </div>
-
-                    <button
-                        class="bg-indigo-600 text-white px-5 py-2 rounded-lg">
-                        View
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
+        </nav>
 
     </div>
 
+    <router-outlet></router-outlet>
+
 </div>
+
+    
+
