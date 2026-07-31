@@ -6,6 +6,9 @@ import { Register } from './features/auth/pages/register/register';
 import { Todo } from './features/todo/pages/todo/todo';
 import { DashboardLayout } from './shared/components/dashboard-layout/dashboard-layout';
 import { CourseLayout } from './shared/components/course-layout/course-layout/course-layout';
+import { CourseNavActivity } from './shared/components/course-nav-activity/course-nav-activity/course-nav-activity';
+import { CourseNavPeople } from './shared/components/course-nav-people/course-nav-people/course-nav-people';
+import { CourseNavInfo } from './shared/components/course-nav-info/course-nav-info/course-nav-info';
 
 export const routes: Routes = [
   {
@@ -34,7 +37,26 @@ export const routes: Routes = [
       },
       {
         path: 'courselayout',
-        component: CourseLayout
+        component: CourseLayout,
+        children: [
+          {
+            path:'',
+            redirectTo: 'activity',
+            pathMatch: 'full'
+          },
+          {
+            path:'activity',
+            component: CourseNavActivity
+          },
+          {
+            path: 'people',
+            component: CourseNavPeople
+          },
+          {
+            path: 'info',
+            component: CourseNavInfo
+          },
+        ]
       },
     ]
   },
