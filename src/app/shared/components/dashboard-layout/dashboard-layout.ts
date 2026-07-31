@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { LucideBell, LucideChevronDown, LucideLogOut, LucideMoon, LucideSettings, LucideSun, LucideUser } from '@lucide/angular';
+import { LucideBell, LucideChevronDown, LucideChevronLeft, LucideChevronRight, LucideLogOut, LucideMoon, LucideSettings, LucideSun, LucideUser } from '@lucide/angular';
 import { Theme } from '../../../core/services/theme';
 
 @Component({
@@ -13,6 +13,8 @@ import { Theme } from '../../../core/services/theme';
             LucideUser,
             LucideSettings,
             LucideLogOut,
+            LucideChevronLeft,
+            LucideChevronRight,
             LucideSun,
             LucideMoon],
   templateUrl: './dashboard-layout.html',

@@ -265,9 +265,21 @@
       class="absolute right-0 top-1/2 z-10 flex h-10 w-5 -translate-y-1/2 translate-x-1/2 cursor-pointer items-center justify-center rounded-full border border-gray-200 bg-white text-gray-400 shadow-sm transition hover:text-gray-700"
       [attr.aria-label]="sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'">
 
-      <span class="text-lg leading-none">
-        |
-      </span>
+      @if (sidebarCollapsed) {
+
+        <svg
+          lucideChevronRight
+          class="h-4 w-4">
+        </svg>
+
+      } @else {
+        
+        <svg
+          lucideChevronLeft
+          class="h-4 w-4">
+        </svg>
+
+      }
 
     </button>
 
