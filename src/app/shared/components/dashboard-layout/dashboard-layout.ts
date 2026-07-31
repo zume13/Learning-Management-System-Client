@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { LucideBell, LucideChevronDown, LucideLogOut, LucideSettings, LucideUser } from '@lucide/angular';
+import { LucideBell, LucideChevronDown, LucideLogOut, LucideMoon, LucideSettings, LucideSun, LucideUser } from '@lucide/angular';
+import { Theme } from '../../../core/services/theme';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -11,13 +12,22 @@ import { LucideBell, LucideChevronDown, LucideLogOut, LucideSettings, LucideUser
             LucideChevronDown,
             LucideUser,
             LucideSettings,
-            LucideLogOut],
+            LucideLogOut,
+            LucideSun,
+            LucideMoon],
   templateUrl: './dashboard-layout.html',
   styleUrl: './dashboard-layout.css',
 })
 export class DashboardLayout {
+  
+  private themeService = inject(Theme);
+
   showDropdown = false;
   sidebarCollapsed = false;
+
+  get isDarkMode() {
+    return this.themeService.isDarkMode();
+  }
 
   toggleDropdown() {
     this.showDropdown = !this.showDropdown;
@@ -25,5 +35,9 @@ export class DashboardLayout {
 
   toggleSidebar() {
     this.sidebarCollapsed = !this.sidebarCollapsed;
+  }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 }
