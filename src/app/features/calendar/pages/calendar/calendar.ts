@@ -24,7 +24,7 @@ export class Calendar {
 
   selectedDay: number | null = null;
 
-  events: CalendarEvent[] = [
+  readonly events: CalendarEvent[] = [
     {
       day: 2,
       title: 'Finish Angular Dashboard',
@@ -61,7 +61,7 @@ export class Calendar {
     this.generateCalendar();
   }
 
-  generateCalendar(): void {
+  private generateCalendar(): void {
 
     const year = this.currentDate.getFullYear();
     const month = this.currentDate.getMonth();
@@ -71,36 +71,55 @@ export class Calendar {
 
     this.calendarDays = [];
 
-    // empty cells before the first day
     for (let i = 0; i < firstDay; i++) {
       this.calendarDays.push(null);
     }
 
-    // days of the month
     for (let day = 1; day <= daysInMonth; day++) {
       this.calendarDays.push(day);
     }
+
+  }
+
+  private changeMonth(offset: number): void {
+
+    this.currentDate = new Date(
+      this.currentDate.getFullYear(),
+      this.currentDate.getMonth() + offset,
+      1
+    );
+
+    this.selectedDay = null;
+
+    this.generateCalendar();
+
   }
 
   previousMonth(): void {
-    this.currentDate.setMonth(this.currentDate.getMonth() - 1);
-    this.currentDate = new Date(this.currentDate);
-    this.selectedDay = null;
-    this.generateCalendar();
+    this.changeMonth(-1);
   }
 
   nextMonth(): void {
-    this.currentDate.setMonth(this.currentDate.getMonth() + 1);
-    this.currentDate = new Date(this.currentDate);
-    this.selectedDay = null;
-    this.generateCalendar();
+    this.changeMonth(1);
+  }
+
+  selectDay(day: number | null): void {
+
+    if (day === null) {
+      return;
+    }
+
+    this.selectedDay = day;
+
   }
 
   get monthName(): string {
-    return this.currentDate.toLocaleString('default', {
+
+    return this.currentDate.toLocaleDateString('en-US', {
       month: 'long',
       year: 'numeric'
     });
+
   }
 
   get selectedDateLabel(): string {
@@ -109,23 +128,58 @@ export class Calendar {
       return '';
     }
 
-    const date = new Date(
+    const selectedDate = new Date(
       this.currentDate.getFullYear(),
       this.currentDate.getMonth(),
       this.selectedDay
     );
 
-    const label = date.toLocaleDateString('en-US', {
+    const formattedDate = selectedDate.toLocaleDateString('en-US', {
       weekday: 'long',
       month: 'long',
       day: 'numeric'
     });
 
-    if (this.isToday(this.selectedDay)) {
-      return `Today • ${label}`;
+    return this.isToday(this.selectedDay)
+      ? `Today • ${formattedDate}`
+      : formattedDate;
+
+  }
+
+  get selectedEvents(): CalendarEvent[] {
+
+    if (this.selectedDay === null) {
+      return [];
     }
 
-    return label;
+    return this.getEvents(this.selectedDay);
+
+  }
+
+  get selectedEventLabel(): string {
+
+    const count = this.selectedEvents.length;
+
+    switch (count) {
+      case 0:
+        return 'No assignments';
+
+      case 1:
+        return '1 assignment';
+
+      default:
+        return `${count} assignments`;
+    }
+
+  }
+
+  getEvents(day: number | null): CalendarEvent[] {
+
+    if (day === null) {
+      return [];
+    }
+
+    return this.events.filter(event => event.day === day);
 
   }
 
@@ -142,49 +196,7 @@ export class Calendar {
       this.currentDate.getMonth() === today.getMonth() &&
       this.currentDate.getFullYear() === today.getFullYear()
     );
-  }
 
-  getEvents(day: number | null): CalendarEvent[] {
-
-    if (day === null) {
-      return [];
-    }
-
-    return this.events.filter(event => event.day === day);
-  }
-
-  selectDay(day: number | null): void {
-
-    if (day === null) {
-      return;
-    }
-
-    this.selectedDay = day;
-  }
-
-  get selectedEventLabel(): string {
-
-    const count = this.selectedEvents.length;
-
-    if (count === 0) {
-      return 'No assignments';
-    }
-
-    if (count === 1) {
-      return '1 assignment';
-    }
-
-    return `${count} assignments`;
-
-  }
-
-  get selectedEvents(): CalendarEvent[] {
-
-    if (this.selectedDay === null) {
-      return [];
-    }
-
-    return this.getEvents(this.selectedDay);
   }
 
 }
