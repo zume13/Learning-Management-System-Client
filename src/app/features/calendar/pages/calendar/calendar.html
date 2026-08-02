@@ -1,1 +1,240 @@
-<p>calendar works!</p>
+<div class="min-h-full bg-gray-50 p-10 text-gray-900 dark:bg-[#080b0f] dark:text-[#f0f6fc]">
+
+  <div class="flex items-center justify-between">
+
+    <div>
+
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-[#f0f6fc]">
+        Calendar
+      </h1>
+
+      <p class="mt-2 text-gray-500 dark:text-[#8b949e]">
+        Stay on top of your classes and deadlines.
+      </p>
+
+    </div>
+
+    <div class="flex items-center gap-3">
+
+      <button
+        type="button"
+        (click)="previousMonth()"
+        class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-900 dark:border-[#30363d] dark:bg-[#161b22] dark:text-[#8b949e] dark:hover:bg-[#21262d] dark:hover:text-[#f0f6fc]">
+
+        <svg
+          lucideChevronLeft
+          class="h-5 w-5">
+        </svg>
+
+      </button>
+
+      <h2 class="w-48 text-center text-xl font-semibold">
+        {{ monthName }}
+      </h2>
+
+      <button
+        type="button"
+        (click)="nextMonth()"
+        class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-900 dark:border-[#30363d] dark:bg-[#161b22] dark:text-[#8b949e] dark:hover:bg-[#21262d] dark:hover:text-[#f0f6fc]">
+
+        <svg
+          lucideChevronRight
+          class="h-5 w-5">
+        </svg>
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- calendar -->
+  <div class="mt-8 overflow-hidden rounded-2xl bg-white shadow transition-colors duration-300 dark:bg-[#161b22]">
+
+    <!-- weekday header -->
+    <div class="grid grid-cols-7 border-b border-gray-200 dark:border-[#30363d]">
+
+      @for (day of daysOfWeek; track day) {
+
+        <div
+          class="py-4 text-center text-sm font-semibold text-gray-500 dark:text-[#8b949e]">
+
+          {{ day }}
+
+        </div>
+
+      }
+
+    </div>
+
+    <!-- calendar grid -->
+    <div class="grid grid-cols-7">
+
+      @for (day of calendarDays; track $index) {
+
+        <div
+          (click)="selectDay(day)"
+          class="aspect-square border border-gray-100 p-3 transition-all duration-300 dark:border-[#21262d]"
+
+          [class.cursor-pointer]="day !== null"
+          [class.hover:bg-gray-50]="day !== null"
+          [class.hover:shadow-sm]="day !== null"
+          [class.dark:hover:bg-[#21262d]]="day !== null"
+
+          [class.bg-indigo-50]="selectedDay === day"
+          [class.dark:bg-[#1a2333]]="selectedDay === day"
+          [class.shadow-sm]="selectedDay === day"
+          [class.border-indigo-200]="selectedDay === day"
+          [class.dark:border-indigo-800]="selectedDay === day"
+          [class.scale-[1.01]]="selectedDay === day">
+
+          @if (day !== null) {
+
+            <div class="flex h-full flex-col">
+
+              <!-- day number -->
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full font-medium transition-all duration-300"
+
+                [class.bg-indigo-600]="selectedDay === day"
+                [class.dark:bg-indigo-500]="selectedDay === day"
+                [class.text-white]="selectedDay === day"
+
+                [class.ring-2]="isToday(day) && selectedDay !== day"
+                [class.ring-indigo-500]="isToday(day) && selectedDay !== day"
+                [class.text-indigo-600]="isToday(day) && selectedDay !== day"
+                [class.dark:text-indigo-400]="isToday(day) && selectedDay !== day">
+
+                {{ day }}
+
+              </span>
+
+              <!-- event dots -->
+              <div class="mt-2 flex flex-wrap gap-1">
+
+                @for (event of getEvents(day); track $index) {
+
+                  <span
+                    class="h-2 w-2 rounded-full"
+                    [class.bg-red-500]="event.color === 'red'"
+                    [class.bg-orange-500]="event.color === 'orange'"
+                    [class.bg-blue-500]="event.color === 'blue'"
+                    [class.bg-green-500]="event.color === 'green'"
+                    [class.bg-purple-500]="event.color === 'purple'">
+                  </span>
+
+                }
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+  <!-- legend -->
+  <div
+    class="mt-4 flex flex-wrap items-center gap-6 text-sm text-gray-600 transition-colors duration-300 dark:text-[#8b949e]">
+
+    <div class="flex items-center gap-2">
+      <span class="h-3 w-3 rounded-full bg-red-500"></span>
+      <span>Assignment</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <span class="h-3 w-3 rounded-full bg-orange-500"></span>
+      <span>Homework</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <span class="h-3 w-3 rounded-full bg-blue-500"></span>
+      <span>Quiz</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <span class="h-3 w-3 rounded-full bg-green-500"></span>
+      <span>Project</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <span class="h-3 w-3 rounded-full bg-purple-500"></span>
+      <span>Exam</span>
+    </div>
+
+  </div>
+
+  <!-- selected Day -->
+  @if (selectedDay !== null) {
+
+    <section
+      class="mt-6 rounded-2xl bg-white p-6 shadow transition-colors duration-300 dark:bg-[#161b22]">
+
+      <header>
+
+        <h2 class="text-xl font-bold text-gray-900 dark:text-[#f0f6fc]">
+          {{ selectedDateLabel }}
+        </h2>
+
+        <p class="mt-1 text-sm text-gray-500 dark:text-[#8b949e]">
+          {{ selectedEventLabel }}
+        </p>
+
+      </header>
+
+      <div class="mt-4">
+
+        @if (selectedEvents.length === 0) {
+
+          <p class="py-10 text-center text-sm text-gray-500 dark:text-[#8b949e]">
+            No assignments for this day.
+          </p>
+
+        } @else {
+
+          @for (event of selectedEvents; track $index; let last = $last) {
+
+            <div
+              class="cursor-default flex items-center gap-3 rounded-lg bg-gray-100 p-4 transition-all duration-300 hover:bg-gray-200 dark:bg-[#21262d] dark:hover:bg-[#30363d]"
+              [class.mb-3]="!last">
+
+              <span
+                class="h-3 w-3 rounded-full"
+                [class.bg-red-500]="event.color === 'red'"
+                [class.bg-orange-500]="event.color === 'orange'"
+                [class.bg-blue-500]="event.color === 'blue'"
+                [class.bg-green-500]="event.color === 'green'"
+                [class.bg-purple-500]="event.color === 'purple'">
+              </span>
+
+              <div>
+
+                <p class="font-semibold text-gray-900 dark:text-[#f0f6fc]">
+                  {{ event.title }}
+                </p>
+
+                <p class="text-sm text-gray-500 dark:text-[#8b949e]">
+                  {{ event.subject }}
+                </p>
+
+              </div>
+
+            </div>
+
+          }
+
+        }
+
+      </div>
+
+    </section>
+
+  }
+
+</div>
