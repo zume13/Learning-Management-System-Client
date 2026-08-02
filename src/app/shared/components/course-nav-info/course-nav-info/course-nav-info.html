@@ -1,1 +1,111 @@
-<p>course-nav-info works!</p>
+<div class="mx-auto max-w-3xl space-y-6">
+
+    <div class="rounded-2xl bg-white p-6 shadow">
+
+        <h2 class="text-2xl font-bold text-gray-900">
+            Invite 
+        </h2>
+
+        <p class="mt-2 text-sm text-gray-500">
+            Share this invite link to join your course.
+        </p>
+
+        <div class="mt-6 flex gap-3">
+
+            <input
+                class="flex-1 rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-gray-700 outline-none focus:text-indigo-500"
+                [value]="inviteLink"
+                readonly
+            />
+
+            <button
+                class="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:text-indigo-300"
+                (click)="copyInviteLink()">
+
+                {{ linkCopied ? 'Copied!' : 'Copy' }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="rounded-2xl bg-white p-6 shadow">
+
+        <h2 class="text-xl font-semibold text-gray-900">
+            Course Code
+        </h2>
+
+        <p class="mt-2 text-sm text-gray-500">
+            Join Via Course Code.
+        </p>
+
+        <div class="mt-5 flex items-center justify-between rounded-xl border border-dashed border-indigo-300 bg-indigo-50 px-5 py-4">
+
+            <span class="text-3xl font-bold tracking-widest text-indigo-600">
+                {{ codeVisible ? courseCode : '••••••' }}
+            </span>
+
+            <div class="flex items-center gap-2">
+
+                <button
+                    (click)="toggleCodeVisibility()"
+                    class="rounded-lg p-2 text-indigo-600 transition hover:bg-indigo-100">
+
+                    @if(codeVisible) {
+                        <svg
+                            xmins="https//www.w3.org/2000/svg"
+                            fill="none"
+                            viewbox=" 0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            class="h-6 w-6 text-indigo-600">
+
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M3 3l18 18M10.5 10.5a3 3 0 004.24 4.24M9.75 5.4C10.47 5.15 11.22 5 12 5c6 0 9.75 7 9.75 7a17.7 17.7 0 01-3.03 3.63M6.61 6.61C3.8 8.4 2.25 12 2.25 12s3.75 7 9.75 7c1.26 0 2.43-.28 3.5-.77">
+                            </path>
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="3">
+                            </circle>
+
+                        </svg>
+
+                    } @else {
+                        <svg
+                            xmins="https//www.w3.org/2000/svg"
+                            fill="none"
+                            viewbox=" 0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            class="h-6 w-6 text-indigo-600">
+
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M3 3l18 18M10.5 10.5a3 3 0 004.24 4.24M9.75 5.4C10.47 5.15 11.22 5 12 5c6 0 9.75 7 9.75 7a17.7 17.7 0 01-3.03 3.63M6.61 6.61C3.8 8.4 2.25 12 2.25 12s3.75 7 9.75 7c1.26 0 2.43-.28 3.5-.77">
+                            </path>
+
+                        </svg>
+                    }
+
+                </button>
+            </div>
+
+            <button
+                class="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:text-indigo-300"
+                (click)="copyCourseCode()">
+
+                {{ codeCopied ? 'Copied!' : 'Copy' }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
