@@ -9,6 +9,7 @@ import { CourseLayout } from './shared/components/course-layout/course-layout/co
 import { CourseNavActivity } from './shared/components/course-nav-activity/course-nav-activity/course-nav-activity';
 import { CourseNavPeople } from './shared/components/course-nav-people/course-nav-people/course-nav-people';
 import { CourseNavInfo } from './shared/components/course-nav-info/course-nav-info/course-nav-info';
+import { Calendar } from './features/calendar/pages/calendar/calendar';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,10 @@ export const routes: Routes = [
       {
         path: 'todo',
         component: Todo
+      },
+      {
+        path: 'calendar',
+        component: Calendar
       },
       {
         path: 'courselayout',
